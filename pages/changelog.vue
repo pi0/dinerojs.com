@@ -44,8 +44,8 @@ export default {
     return { marked }
   },
   methods: {
-    h1ToH2(content) {
-      return content.replace(/^(#? )/gm, '#$1')
+    h1ToH2(markdownContent) {
+      return markdownContent.replace(/^(#? )/gm, '#$1')
     }
   }
 }
