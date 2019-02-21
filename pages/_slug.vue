@@ -11,7 +11,7 @@ export default {
     let res = null
     try {
       res = await axios.get(
-        `http://localhost:4000/docs/en/${route.params.slug}`
+        `${store.state.apiUrl}${store.state.locale}/${route.params.slug}`
       )
     } catch (err) {
       throw err
