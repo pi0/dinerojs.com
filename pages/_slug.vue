@@ -1,15 +1,13 @@
 <template>
-  <div v-html="body.data"/>
+  <div v-html="marked(content)"/>
 </template>
 
 <script>
 import axios from 'axios'
+import marked from 'marked'
 
 export default {
   async asyncData({ route, store, error }) {
-    const data = {
-      body: ''
-    }
     let res = null
     try {
       res = await axios.get(
@@ -18,8 +16,12 @@ export default {
     } catch (err) {
       throw err
     }
-    data.body = res.data
-    return data
+    return {
+      content: res.data.data
+    }
+  },
+  data() {
+    return { marked }
   }
 }
 </script>
