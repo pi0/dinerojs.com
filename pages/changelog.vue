@@ -1,45 +1,37 @@
 <template>
-  <div>
+  <content-page>
     <h1>Changelog</h1>
-    <ul>
-      <li :key="id" v-for="(release, id) in releases">
-        <div v-html="marked(h1ToH2(release.body))"/>
-        <h3>Assets</h3>
-        <ul>
-          <li>
-            <a :href="release.zipball_url">
-              <strong>Source code</strong> (zip)
-            </a>
-          </li>
-          <li>
-            <a :href="release.tarball_url">
-              <strong>Source code</strong> (tar.gz)
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+    <div class="-mb-16">
+      <div class="mb-16" :key="id" v-for="(release, id) in $store.state.changelog">
+        <div class="mb-6" v-html="marked(h1ToH2(release.body))"/>
+        <div class="flex -mx-2">
+          <a
+            :key="id"
+            v-for="(downloads, id) in [{ type: 'zip', key: 'zipball_url' }, { type: 'tar.gz', key: 'tarball_url' }]"
+            class="flex items-center mx-2"
+            :href="release[downloads.key]"
+          >
+            <download-icon class="w-16 h-16 mr-2 text-grey-dark stroke-current"/>
+            <span>
+              <strong>Source code</strong>
+              ({{ downloads.type }})
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </content-page>
 </template>
 
 <script>
-import axios from 'axios'
 import marked from 'marked'
 
+import ContentPage from '@/components/ContentPage'
+
+import DownloadIcon from '@/assets/img/icons/download.svg'
+
 export default {
-  async asyncData({ route, store, error }) {
-    let res = null
-    try {
-      res = await axios.get(
-        'https://api.github.com/repos/sarahdayan/dinero.js/releases'
-      )
-    } catch (err) {
-      throw err
-    }
-    return {
-      releases: res.data
-    }
-  },
+  components: { ContentPage, DownloadIcon },
   data() {
     return { marked }
   },

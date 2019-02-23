@@ -1,0 +1,162 @@
+/deep/ {
+  @apply leading-loose;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mt-10 font-normal text-grey-darkest;
+  }
+  h1 {
+    @apply mt-0 text-3xl;
+    & + h2,
+    & + h3,
+    & + h4,
+    & + h5,
+    & + h6 {
+      @apply mt-4;
+    }
+  }
+  h2 {
+    @apply text-2xl;
+    & + h3,
+    & + h4,
+    & + h5,
+    & + h6 {
+      @apply mt-4;
+    }
+  }
+  h3 {
+    @apply text-xl;
+    & + h4,
+    & + h5,
+    & + h6 {
+      @apply mt-4;
+    }
+  }
+  h4 {
+    @apply text-xl;
+    & + h5,
+    & + h6 {
+      @apply mt-4;
+    }
+  }
+  h5 {
+    @apply text-xl;
+    & + h6 {
+      @apply mt-4;
+    }
+  }
+  h4,
+  h5,
+  h6 {
+    @apply text-lg;
+  }
+  p,
+  ul,
+  ol {
+    @apply mt-6;
+  }
+  ul {
+    @apply list-reset ml-4;
+    li {
+      &:before {
+        @apply inline-block -ml-4 mr-3 text-grey;
+        content: '\2022';
+      }
+    }
+  }
+  a {
+    @apply text-sapphire-blue no-underline;
+    &:hover {
+      @apply underline;
+    }
+  }
+  table {
+    @apply mt-6;
+    tr,
+    th {
+      td {
+        @apply p-2 border-b border-solid border-grey-light;
+        &:first-child {
+          @apply pl-0;
+        }
+        &:last-child {
+          @apply pr-0;
+        }
+      }
+    }
+    tr {
+      &:last-child {
+        td {
+          @apply border-none;
+        }
+      }
+    }
+  }
+  code {
+    @apply py-1 px-2 bg-grey-lighter text-grey-darkest text-sm rounded;
+  }
+  pre {
+    @apply block mt-6 p-6 bg-grey-lighter text-grey-darkest text-sm overflow-x-auto rounded;
+    code {
+      all: unset;
+    }
+  }
+  .token {
+    &.comment,
+    &.prolog,
+    &.doctype,
+    &.cdata {
+      color: #999988;
+    }
+    &.namespace {
+      opacity: .7;
+    }
+    &.string,
+    &.attr-value {
+      color: #e3116c;
+    }
+    &.punctuation,
+    &.operator {
+      color: #393A34;
+    }
+    &.entity,
+    &.url,
+    &.symbol,
+    &.number,
+    &.boolean,
+    &.variable,
+    &.constant,
+    &.property,
+    &.regex,
+    &.inserted {
+      color: #36acaa;
+    }
+    &.atrule,
+    &.keyword,
+    &.attr-name,
+    &.language-autohotkey .selector {
+      color: #00a4db;
+    }
+    &.function,
+    &.deleted,
+    &.language-autohotkey .tag {
+      color: #9a050f;
+    }
+    &.tag,
+    &.selector,
+    &.language-autohotkey .keyword {
+      color: #00009f;
+    }
+    &.important,
+    &.function,
+    &.bold {
+      @apply font-bold;
+    }
+    &.italic {
+      @apply italic;
+    }
+  }
+}

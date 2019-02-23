@@ -36,7 +36,8 @@ module.exports = {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'nuxt-svg-loader'
   ],
   /*
   ** Axios module configuration

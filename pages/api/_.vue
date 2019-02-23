@@ -1,21 +1,27 @@
 <template>
-  <div>
-    <template v-if="typeof content === 'object'">
+  <content-page>
+    <div v-if="isRefPage">
       <h1>{{ content.title }}</h1>
-      <pre>{{ content.signature }} → {{ content.response_type }}</pre>
-      <div v-html="marked(content.description)"/>
+      <pre><span
+  class="block mb-3 text-xxs uppercase font-sans text-grey-dark font-semibold tracking-wide"
+>Method signature</span><code
+  class="block"
+>{{ content.signature }} → {{ content.response_type }}</code></pre>
+      <div v-html="highlightedMarkdown(content.description)"/>
       <div :key="id" v-for="(example, id) in content.examples">
         <h3>{{ example.title }}</h3>
-        <pre>{{ example.code }}</pre>
+        <pre v-html="javascriptHighlight(example.code)"/>
       </div>
-    </template>
-    <div v-else v-html="marked(content)"/>
-  </div>
+    </div>
+    <div v-else v-html="highlightedMarkdown(content)"/>
+  </content-page>
 </template>
 
 <script>
 import axios from 'axios'
-import marked from 'marked'
+import { highlightedMarkdown, javascriptHighlight } from '@/scripts/utils.js'
+
+import ContentPage from '@/components/ContentPage'
 
 export default {
   async asyncData({ route, store, error }) {
@@ -32,8 +38,14 @@ export default {
       content: res.data.data
     }
   },
+  components: { ContentPage },
   data() {
-    return { marked }
+    return { highlightedMarkdown, javascriptHighlight }
+  },
+  computed: {
+    isRefPage() {
+      return typeof this.content === 'object'
+    }
   }
 }
 </script>

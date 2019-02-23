@@ -1,10 +1,12 @@
 <template>
-  <div v-html="marked(content)"/>
+  <content-page v-html="highlightedMarkdown(content)"/>
 </template>
 
 <script>
 import axios from 'axios'
-import marked from 'marked'
+import { highlightedMarkdown } from '@/scripts/utils.js'
+
+import ContentPage from '@/components/ContentPage'
 
 export default {
   async asyncData({ route, store, error }) {
@@ -20,8 +22,9 @@ export default {
       content: res.data.data
     }
   },
+  components: { ContentPage },
   data() {
-    return { marked }
+    return { highlightedMarkdown }
   }
 }
 </script>
