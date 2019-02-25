@@ -29,7 +29,7 @@
       </li>
     </ul>
     <div class="flex flex-1 items-center h-48 mr-3 px-5 bg-grey-lighter rounded">
-      <search-icon class="text-grey stroke-current h-16 w-16"/>
+      <search-icon class="text-grey stroke-current h-16 w-16" />
       <input
         class="block w-full w-auto h-auto py-2 pl-4 bg-transparent text-size-inherit"
         type="text"

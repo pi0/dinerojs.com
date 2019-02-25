@@ -1,5 +1,7 @@
 <template>
-  <content-page v-html="highlightedMarkdown(content)"/>
+  <content-page>
+    <div v-html="highlightedMarkdown(content)" />
+  </content-page>
 </template>
 
 <script>
@@ -9,6 +11,10 @@ import { highlightedMarkdown } from '@/scripts/utils.js'
 import ContentPage from '@/components/ContentPage'
 
 export default {
+  components: { ContentPage },
+  data() {
+    return { highlightedMarkdown }
+  },
   async asyncData({ route, store, error }) {
     let res = null
     try {
@@ -21,10 +27,6 @@ export default {
     return {
       content: res.data.data
     }
-  },
-  components: { ContentPage },
-  data() {
-    return { highlightedMarkdown }
   }
 }
 </script>

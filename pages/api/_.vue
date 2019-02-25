@@ -6,14 +6,14 @@
   class="block mb-3 text-xxs uppercase font-sans text-grey-dark font-semibold tracking-wide"
 >Method signature</span><code
   class="block"
->{{ content.signature }} → {{ content.response_type }}</code></pre>
-      <div v-html="highlightedMarkdown(content.description)"/>
-      <div :key="id" v-for="(example, id) in content.examples">
+      >{{ content.signature }} → {{ content.response_type }}</code></pre>
+      <div v-html="highlightedMarkdown(content.description)" />
+      <div v-for="(example, id) in content.examples" :key="id">
         <h3>{{ example.title }}</h3>
-        <pre v-html="javascriptHighlight(example.code)"/>
+        <pre v-html="javascriptHighlight(example.code)" />
       </div>
     </div>
-    <div v-else v-html="highlightedMarkdown(content)"/>
+    <div v-else v-html="highlightedMarkdown(content)" />
   </content-page>
 </template>
 
@@ -24,6 +24,15 @@ import { highlightedMarkdown, javascriptHighlight } from '@/scripts/utils.js'
 import ContentPage from '@/components/ContentPage'
 
 export default {
+  components: { ContentPage },
+  data() {
+    return { highlightedMarkdown, javascriptHighlight }
+  },
+  computed: {
+    isRefPage() {
+      return typeof this.content === 'object'
+    }
+  },
   async asyncData({ route, store, error }) {
     let res = null
     try {
@@ -36,15 +45,6 @@ export default {
     }
     return {
       content: res.data.data
-    }
-  },
-  components: { ContentPage },
-  data() {
-    return { highlightedMarkdown, javascriptHighlight }
-  },
-  computed: {
-    isRefPage() {
-      return typeof this.content === 'object'
     }
   }
 }

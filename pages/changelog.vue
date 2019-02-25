@@ -2,16 +2,16 @@
   <content-page>
     <h1>Changelog</h1>
     <div class="-mb-16">
-      <div class="mb-16" :key="id" v-for="(release, id) in $store.state.changelog">
-        <div class="mb-6" v-html="marked(h1ToH2(release.body))"/>
+      <div v-for="(release, id) in $store.state.changelog" :key="id" class="mb-16">
+        <div class="mb-6" v-html="marked(h1ToH2(release.body))" />
         <div class="flex -mx-2">
           <a
-            :key="id"
             v-for="(downloads, id) in [{ type: 'zip', key: 'zipball_url' }, { type: 'tar.gz', key: 'tarball_url' }]"
+            :key="id"
             class="flex items-center mx-2"
             :href="release[downloads.key]"
           >
-            <download-icon class="w-16 h-16 mr-2 text-grey-dark stroke-current"/>
+            <download-icon class="w-16 h-16 mr-2 text-grey-dark stroke-current" />
             <span>
               <strong>Source code</strong>
               ({{ downloads.type }})

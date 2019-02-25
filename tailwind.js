@@ -804,7 +804,7 @@ module.exports = {
   */
 
   plugins: [
-    function ({ addUtilities }) {
+    function({ addUtilities }) {
       addUtilities(
         {
           [`.grid`]: {
