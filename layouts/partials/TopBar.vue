@@ -6,7 +6,7 @@
       <li class="mx-2">
         <a
           class="text-grey-dark hover:text-grey-darker no-underline whitespace-no-wrap"
-          href="/quick-start"
+          href="/getting-started/quick-start"
         >Quick Start</a>
       </li>
       <li class="mx-2">
