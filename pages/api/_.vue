@@ -7,7 +7,9 @@
 >Method signature</span><code
   class="block"
 >{{ content.signature }} → {{ content.response_type }}</code></pre>
+      <h2>About this method</h2>
       <div v-html="markdown(content.description)"/>
+      <h2>Examples</h2>
       <div v-for="(example, id) in content.examples" :key="id">
         <h3>{{ example.title }}</h3>
         <pre v-html="highlight(example.code)"/>
