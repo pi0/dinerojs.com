@@ -103,60 +103,77 @@
     code {
       all: unset;
     }
-  }
-  .token {
-    &.comment,
-    &.prolog,
-    &.doctype,
-    &.cdata {
-      color: #999988;
-    }
-    &.namespace {
-      opacity: .7;
-    }
-    &.string,
-    &.attr-value {
-      color: #e3116c;
-    }
-    &.punctuation,
-    &.operator {
-      color: #393A34;
-    }
-    &.entity,
-    &.url,
-    &.symbol,
-    &.number,
-    &.boolean,
-    &.variable,
-    &.constant,
-    &.property,
-    &.regex,
-    &.inserted {
-      color: #36acaa;
-    }
-    &.atrule,
-    &.keyword,
-    &.attr-name,
-    &.language-autohotkey .selector {
-      color: #00a4db;
-    }
-    &.function,
-    &.deleted,
-    &.language-autohotkey .tag {
-      color: #9a050f;
-    }
-    &.tag,
-    &.selector,
-    &.language-autohotkey .keyword {
-      color: #00009f;
-    }
-    &.important,
-    &.function,
-    &.bold {
-      @apply font-bold;
-    }
-    &.italic {
-      @apply italic;
+    .hljs {
+      &-comment,
+      &-quote {
+        color: #998;
+      }
+      &-keyword,
+      &-selector-tag,
+      &-subst {
+        color: #333;
+        @apply font-bold;
+      }
+      &-number,
+      &-literal,
+      &-variable,
+      &-template-variable,
+      &-tag {
+        color: #008080;
+      }
+      &-string,
+      &-doctag {
+        color: #d14;
+      }
+      &-title,
+      &-section,
+      &-selector-id {
+        color: #900;
+        @apply font-bold;
+      }
+      &-subst {
+        @apply font-normal;
+      }
+      &-type,
+      &-class,
+      &-title {
+        color: #458;
+        @apply font-bold;
+      }
+      &-tag,
+      &-name,
+      &-attribute {
+        color: #000080;
+        @apply font-normal;
+      }
+      &-regexp,
+      &-link {
+        color: #009926;
+      }
+      &-symbol,
+      &-bullet {
+        color: #990073;
+      }
+      &-built_in,
+      &-builtin-name {
+        color: #0086b3;
+      }
+      &-meta {
+        color: #999;
+        @apply font-bold;
+      }
+      &-deletion {
+        background: #fdd;
+      }
+      &-addition {
+        background: #dfd;
+      }
+      &-emphasis {
+        @apply italic;
+      }
+      &-strong {
+        @apply font-bold;
+      }
     }
   }
 }

@@ -16,6 +16,8 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
+    "highlight.js": "^9.15.6",
+    "marked": "^0.6.1",
     "nuxt": "^2.4.0"
   },
   "devDependencies": {
@@ -37,12 +39,10 @@
     "eslint-plugin-standard": ">=4.0.0",
     "eslint-plugin-vue": "^5.0.0",
     "jest": "^23.6.0",
-    "marked": "^0.6.1",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
     "nuxt-svg-loader": "^1.0.1",
     "prettier": "1.14.3",
-    "prismjs": "^1.15.0",
     "sass-loader": "^7.1.0",
     "tailwindcss": "^0.7.0",
     "vue-jest": "^3.0.2"

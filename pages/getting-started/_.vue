@@ -19,7 +19,7 @@ export default {
     let res = null
     try {
       res = await axios.get(
-        `${store.state.apiUrl}${store.state.locale}/${route.params.slug}`
+        `${store.state.apiUrl}${store.state.locale}${route.path || ''}`
       )
     } catch (err) {
       throw err

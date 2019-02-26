@@ -6,27 +6,28 @@
   class="block mb-3 text-xxs uppercase font-sans text-grey-dark font-semibold tracking-wide"
 >Method signature</span><code
   class="block"
-      >{{ content.signature }} → {{ content.response_type }}</code></pre>
-      <div v-html="highlightedMarkdown(content.description)" />
+>{{ content.signature }} → {{ content.response_type }}</code></pre>
+      <div v-html="markdown(content.description)"/>
       <div v-for="(example, id) in content.examples" :key="id">
         <h3>{{ example.title }}</h3>
-        <pre v-html="javascriptHighlight(example.code)" />
+        <pre v-html="highlight(example.code)"/>
       </div>
     </div>
-    <div v-else v-html="highlightedMarkdown(content)" />
+    <div v-else v-html="markdown(content)"/>
   </content-page>
 </template>
 
 <script>
 import axios from 'axios'
-import { highlightedMarkdown, javascriptHighlight } from '@/scripts/utils.js'
+import markdown from '@/utils/markdown.js'
+import highlight from '@/utils/highlight.js'
 
 import ContentPage from '@/components/ContentPage'
 
 export default {
   components: { ContentPage },
   data() {
-    return { highlightedMarkdown, javascriptHighlight }
+    return { markdown, highlight }
   },
   computed: {
     isRefPage() {
