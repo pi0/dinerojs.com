@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const apiUrl = 'http://localhost:4000/docs/'
-const githubApiUrl = 'https://api.github.com/repos/sarahdayan/dinero.js/releases'
+const githubApiUrl =
+  'https://api.github.com/repos/sarahdayan/dinero.js/releases'
 
 export const state = () => ({
   apiUrl,

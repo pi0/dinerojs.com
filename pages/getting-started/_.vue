@@ -1,6 +1,6 @@
 <template>
   <content-page>
-    <div v-html="markdown(content)"/>
+    <div v-html="markdown(content)" />
   </content-page>
 </template>
 
