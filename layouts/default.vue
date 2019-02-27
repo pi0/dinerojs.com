@@ -5,12 +5,13 @@
     >
       <side-bar
         :navigation="navigation"
+        :ignore="['about']"
         class="sticky pin-t lg:flex hidden h-screen min-w-360 w-full justify-end flex-no-grow flex-no-shrink"
       />
-      <top-bar class="sticky pin-t bg-white" style="grid-column: 2/5"/>
+      <top-bar class="sticky pin-t bg-white" style="grid-column: 2/5" />
       <section class="flex flex-col flex-1" style="grid-column: 2/4">
         <main class="w-full p-8 leading-normal text-grey-darker">
-          <nuxt/>
+          <nuxt />
         </main>
       </section>
     </div>
@@ -21,51 +22,51 @@
 import SideBar from '@/layouts/partials/SideBar'
 import TopBar from '@/layouts/partials/TopBar'
 
+import unslug from '@/utils/unslug.js'
+
 export default {
   components: { SideBar, TopBar },
-  data() {
-    return {
-      navigation: [
-        { label: 'Home', link: '/', icon: 'home' },
-        {
-          label: 'Getting Started',
-          link: '#',
-          subnavigation: [
-            {
-              label: 'What is Dinero.js?',
-              link: '/what-is-dinerojs'
-            },
-            {
-              label: 'Quick Start',
-              link: '/quick-start'
-            }
-          ]
-        },
-        {
-          label: 'API Reference',
-          link: '#',
-          subnavigation: [
-            { label: 'Overview', link: '/api/overview' },
-            { label: 'Installation Guide', link: '/api/install' },
-            { label: 'Access', link: '#' },
-            { label: 'Manipulation', link: '#' },
-            { label: 'Testing', link: '#' },
-            { label: 'Configuration', link: '#' },
-            { label: 'Transformation & Formatting', link: '#' },
-            { label: 'Global & Default Configuration', link: '#' }
-          ]
-        },
-        {
-          label: 'Demos',
-          link: '#',
-          subnavigation: [
-            {
-              label: 'A shopping cart with Dinero.js',
-              link: '#'
-            }
-          ]
-        }
-      ]
+  computed: {
+    navigation() {
+      return this.getNestedChildren(
+        this.$store.getters.routesFromEndpoints
+          .map(endpoint =>
+            endpoint.split('/').map((part, i, arr) => ({
+              slug: part,
+              label: unslug(part),
+              link: endpoint,
+              parent: arr[i - 1] || 0
+            }))
+          )
+          .flat()
+          .filter(
+            (item, i, arr) =>
+              arr.findIndex(
+                el => el.slug === item.slug && el.parent === item.parent
+              ) === i
+          )
+      )
+    }
+  },
+  methods: {
+    getNestedChildren(arr, parent = 0) {
+      return arr
+        .map((item, i, arr) => {
+          if (arr[i].parent === parent) {
+            const nodes = this.getNestedChildren(arr, arr[i].slug)
+            return Object.assign(
+              {},
+              {
+                label: arr[i].label,
+                slug: arr[i].slug,
+                link: `/${arr[i].link}`
+              },
+              nodes.length ? { nodes } : {}
+            )
+          }
+          return null
+        })
+        .filter(item => item !== null)
     }
   }
 }

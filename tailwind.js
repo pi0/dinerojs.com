@@ -809,6 +809,9 @@ module.exports = {
         {
           [`.grid`]: {
             display: 'grid'
+          },
+          [`.rotate-90`]: {
+            transform: 'rotateZ(90deg)'
           }
         },
         ['responsive']
