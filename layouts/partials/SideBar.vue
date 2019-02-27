@@ -25,10 +25,9 @@
 import TreeMenu from '@/components/TreeMenu'
 
 import DineroLogo from '@/assets/img/logo.svg'
-import ChevronRightIcon from '@/assets/img/icons/chevron-right.svg'
 
 export default {
-  components: { TreeMenu, DineroLogo, ChevronRightIcon },
+  components: { TreeMenu, DineroLogo },
   props: {
     navigation: {
       type: Array,
@@ -36,7 +35,9 @@ export default {
     },
     ignore: {
       type: Array,
-      default: []
+      default() {
+        return []
+      }
     }
   },
   computed: {

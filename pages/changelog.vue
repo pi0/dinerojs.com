@@ -2,19 +2,19 @@
   <content-page>
     <h1>Changelog</h1>
     <div class="-mb-16">
-      <div v-for="(release, id) in $store.state.changelog" :key="id" class="mb-16">
+      <div v-for="(release, releaseId) in $store.state.changelog" :key="releaseId" class="mb-16">
         <div class="mb-6" v-html="marked(h1ToH2(release.body))" />
         <div class="flex -mx-2">
           <a
-            v-for="(downloads, id) in [{ type: 'zip', key: 'zipball_url' }, { type: 'tar.gz', key: 'tarball_url' }]"
-            :key="id"
+            v-for="(download, downloadId) in [{ type: 'zip', key: 'zipball_url' }, { type: 'tar.gz', key: 'tarball_url' }]"
+            :key="downloadId"
             class="flex items-center mx-2"
-            :href="release[downloads.key]"
+            :href="release[download.key]"
           >
             <download-icon class="w-16 h-16 mr-2 text-grey-dark stroke-current" />
             <span>
               <strong>Source code</strong>
-              ({{ downloads.type }})
+              ({{ download.type }})
             </span>
           </a>
         </div>
