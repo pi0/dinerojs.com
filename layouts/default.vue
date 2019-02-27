@@ -8,7 +8,11 @@
         :ignore="['about']"
         class="sticky pin-t lg:flex hidden h-screen min-w-360 w-full justify-end flex-no-grow flex-no-shrink"
       />
-      <top-bar class="sticky pin-t bg-white" style="grid-column: 2/5" />
+      <top-bar
+        :navigation="[{ label: 'Quick Start', link: '/getting-started/quick-start' }, { label: 'API', link: '/api/overview' }, { label: 'Changelog', link: '/changelog' }, { label: 'About', link: '/about' }]"
+        class="sticky pin-t bg-white"
+        style="grid-column: 2/5"
+      />
       <section class="flex flex-col flex-1" style="grid-column: 2/4">
         <main class="w-full p-8 leading-normal text-grey-darker">
           <nuxt />

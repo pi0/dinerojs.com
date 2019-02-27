@@ -6,7 +6,7 @@
       >
         <div class="w-360 py-3 px-8 flex justify-between items-center">
           <a href="/" class="flex items-center text-sapphire-blue no-underline">
-            <dinero-logo class="w-40 mr-2"/>
+            <dinero-logo class="w-40 mr-2" />
             <h1 class="text-lg">Dinero.js</h1>
           </a>
           <span class="text-xs text-grey-dark">{{ $store.getters.latestVersion }}</span>
@@ -14,7 +14,7 @@
       </div>
       <div class="w-360 overflow-y-auto">
         <div class="py-6">
-          <tree-menu :label="tree.label" :link="tree.link" :nodes="tree.nodes" :depth="-1"/>
+          <tree-menu :label="tree.label" :link="tree.link" :nodes="tree.nodes" :depth="-1" />
         </div>
       </div>
     </div>
