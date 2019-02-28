@@ -96,7 +96,7 @@
     th {
       td {
         @apply p-2 border-b border-solid border-grey-light;
-        & *:first-child {
+        &:first-child {
           @apply pl-0;
         }
         &:last-child {
