@@ -73,7 +73,10 @@ export default {
       return this.$route.path === this.link
     },
     hasActiveChild() {
-      return JSON.stringify(this.nodes).indexOf(this.$route.path) !== -1
+      return (
+        this.$route.path !== '/' &&
+        JSON.stringify(this.nodes).indexOf(this.$route.path) !== -1
+      )
     }
   },
   methods: {
