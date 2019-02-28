@@ -18,7 +18,7 @@
       </div>
       <div v-else v-html="markdown(content)" />
     </content-page>
-    <page-navigation :previous="previousNext.previous" :next="previousNext.next" />
+    <page-navigation class="mt-12" :previous="previousNext.previous" :next="previousNext.next" />
   </div>
 </template>
 
