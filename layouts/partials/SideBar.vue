@@ -32,20 +32,12 @@ export default {
     navigation: {
       type: Array,
       required: true
-    },
-    ignore: {
-      type: Array,
-      default() {
-        return []
-      }
     }
   },
   computed: {
     tree() {
       return {
-        nodes: this.navigation.filter(
-          item => this.ignore.indexOf(item.slug) === -1
-        )
+        nodes: this.navigation
       }
     }
   }

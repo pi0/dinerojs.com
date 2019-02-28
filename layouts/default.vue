@@ -5,7 +5,6 @@
     >
       <side-bar
         :navigation="navigation"
-        :ignore="['about']"
         class="sticky pin-t lg:flex hidden h-screen min-w-360 w-full justify-end flex-no-grow flex-no-shrink"
       />
       <top-bar
@@ -33,7 +32,7 @@ export default {
   computed: {
     navigation() {
       return this.getNestedChildren(
-        this.$store.getters.routesFromEndpoints
+        this.$store.getters.sidebarRoutesFromEndpoints
           .map(endpoint =>
             endpoint.split('/').map((part, i, arr) => ({
               slug: part,

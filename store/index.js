@@ -12,13 +12,15 @@ export const state = () => ({
 
 export const getters = {
   latestVersion: state => state.changelog[0].tag_name,
-  routesFromEndpoints: state =>
-    Object.entries(state.endpoints).map(endpoint =>
-      endpoint[1].replace(
-        /(https?:\/\/[a-z0-9.]{1,}:[0-9]{1,}\/docs\/[a-z]{1,}\/)/,
-        ''
+  sidebarRoutesFromEndpoints: state =>
+    Object.entries(state.endpoints)
+      .filter(endpoint => endpoint[0] !== 'docs_en_about')
+      .map(endpoint =>
+        endpoint[1].replace(
+          /(https?:\/\/[a-z0-9.]{1,}:[0-9]{1,}\/docs\/[a-z]{1,}\/)/,
+          ''
+        )
       )
-    )
 }
 
 export const mutations = {
