@@ -10,42 +10,59 @@
   }
   h1 {
     @apply mt-0 text-3xl;
-    & + h2,
-    & + h3,
-    & + h4,
-    & + h5,
-    & + h6 {
-      @apply mt-4;
-    }
   }
   h2 {
     @apply text-2xl;
     & + h3,
     & + h4,
     & + h5,
-    & + h6 {
-      @apply mt-4;
+    & + h6,
+    & + p,
+    & + div,
+    & + pre {
+      @apply mt-1;
+      & *:first-child {
+        @apply mt-0;
+      }
     }
   }
   h3 {
     @apply text-xl;
     & + h4,
     & + h5,
-    & + h6 {
-      @apply mt-4;
+    & + h6,
+    & + p,
+    & + div,
+    & + pre {
+      @apply mt-1;
+      & *:first-child {
+        @apply mt-0;
+      }
     }
   }
   h4 {
     @apply text-xl;
     & + h5,
-    & + h6 {
-      @apply mt-4;
+    & + h6,
+    & + p,
+    & + div,
+    & + pre {
+      @apply mt-1;
+      & *:first-child {
+        @apply mt-0;
+      }
     }
   }
   h5 {
     @apply text-xl;
-    & + h6 {
-      @apply mt-4;
+    & + h6,
+    & + p,
+    & + div,
+    & + pre {
+      @apply mt-1;
+      & *:first-child {
+        @apply mt-0;
+      }
     }
   }
   h4,
@@ -79,7 +96,7 @@
     th {
       td {
         @apply p-2 border-b border-solid border-grey-light;
-        &:first-child {
+        & *:first-child {
           @apply pl-0;
         }
         &:last-child {
