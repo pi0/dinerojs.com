@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { description } from './package'
 
 const API_URL = 'http://localhost:4000/docs/'
 
@@ -10,13 +9,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'Dinero.js | Documentation',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: description }
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    title: 'Dinero.js | Documentation'
   },
 
   /*
@@ -37,7 +30,7 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: ['@nuxtjs/axios', 'nuxt-svg-loader'],
+  modules: ['@nuxtjs/axios', 'nuxt-svg-loader', '@nuxtjs/pwa'],
 
   /*
   ** Axios module configuration
