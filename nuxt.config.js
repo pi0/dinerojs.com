@@ -48,17 +48,17 @@ export default {
   },
 
   generate: {
-    routes() {
-      return axios
+    async routes() {
+      const endpoints = await axios
         .get('http://localhost:4000/docs/')
-        .then(endpoints =>
-          Object.entries(endpoints.data).map(endpoint =>
-            endpoint[1].replace(
-              /(https?:\/\/[a-z0-9.]{1,}:[0-9]{1,}\/docs\/[a-z]{1,})/,
-              ''
-            )
-          )
+        .then(res => res.data)
+
+      return Object.values(endpoints).map(path =>
+        path.replace(
+          /(https?:\/\/[a-z0-9.]{1,}:[0-9]{1,}\/docs\/[a-z]{1,})/,
+          ''
         )
+      )
     }
   },
 
