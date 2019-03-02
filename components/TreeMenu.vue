@@ -4,13 +4,13 @@
       <span class="flex items-center">
         <chevron-right-icon
           v-if="hasChevron"
-          class="block w-16 h-16 -ml-6 mr-2 text-grey stroke-current"
+          class="block w-16 h-16 -ml-6 mr-2 text-grey stroke-current transition-fast-out"
           :class="{ 'rotate-90': !shouldHideChildren }"
         />
         <component
           :is="nodes ? 'span' : 'a'"
           :href="nodes ? false : link"
-          class="w-full no-underline"
+          class="w-full no-underline transition-fast-out"
           :class="[ isCurrent && !nodes ? 'text-sapphire-blue' : isSubnavigation ? 'text-grey-dark' : 'text-grey-darker', isSubnavigation ? (nodes ? 'cursor-pointer hover:text-grey-darker' : 'cursor-pointer hover:text-sapphire-blue') : (nodes ? '' : 'cursor-pointer hover:text-grey-darkest') ]"
         >{{ label }}</component>
       </span>

@@ -7,7 +7,7 @@
         class="flex items-center w-full no-underline group"
       >
         <span
-          class="flex items-center justify-center flex-no-grow flex-no-shrink w-48 h-48 mr-4 bg-white text-grey-darker rounded shadow group-hover:shadow-md"
+          class="flex items-center justify-center flex-no-grow flex-no-shrink w-48 h-48 mr-4 bg-white text-grey-darker rounded shadow group-hover:shadow-md transition-fast-out"
         >←</span>
         <span class="flex flex-col flex-1 truncate text-left">
           <span class="text-grey text-sm">Previous</span>
@@ -26,7 +26,7 @@
           <span class="text-grey-darkest truncate">{{ next.text }}</span>
         </span>
         <span
-          class="flex items-center justify-center flex-no-grow flex-no-shrink w-48 h-48 ml-4 bg-white text-grey-darker rounded shadow group-hover:shadow-md"
+          class="flex items-center justify-center flex-no-grow flex-no-shrink w-48 h-48 ml-4 bg-white text-grey-darker rounded shadow group-hover:shadow-md transition-fast-out"
         >→</span>
       </a>
     </div>
