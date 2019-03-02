@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const axios = require('axios')
 
 module.exports = {
   mode: 'universal',
@@ -44,6 +45,19 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  generate: {
+    routes() {
+      return axios.get('http://localhost:4000/docs/')
+        .then(endpoints => Object.entries(endpoints.data)
+          .map(endpoint =>
+            endpoint[1].replace(
+              /(https?:\/\/[a-z0-9.]{1,}:[0-9]{1,}\/docs\/[a-z]{1,})/,
+              ''
+            )
+          ))
+    }
   },
 
   /*
