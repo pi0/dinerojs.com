@@ -1,11 +1,7 @@
-import axios from 'axios'
-
-const apiUrl = 'http://localhost:4000/docs/'
 const githubApiUrl =
   'https://api.github.com/repos/sarahdayan/dinero.js/releases'
 
 export const state = () => ({
-  apiUrl,
   locale: 'en',
   changelog: []
 })
@@ -34,15 +30,13 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({ commit }) {
-    let changelog = null
-    let endpoints = null
-    try {
-      changelog = await axios.get(githubApiUrl)
-      endpoints = await axios.get(apiUrl)
-    } catch (err) {
-      throw err
-    }
-    commit('setChangelog', changelog.data)
-    commit('setEndpoints', endpoints.data)
+    const endpoints = await this.$axios.$get('/')
+    const changelog = await this.$axios.$get(githubApiUrl).catch(e => {
+      console.error('Error while fetching changelog: ', e) // eslint-disable-line no-console
+      return [{ tag_name: '0.0.0' }]
+    })
+
+    commit('setChangelog', changelog)
+    commit('setEndpoints', endpoints)
   }
 }

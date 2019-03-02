@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import markdown from '@/utils/markdown.js'
 
 import ContentPage from '@/components/ContentPage'
@@ -15,17 +14,13 @@ export default {
   data() {
     return { markdown }
   },
-  async asyncData({ route, store, error }) {
-    let res = null
-    try {
-      res = await axios.get(
-        `${store.state.apiUrl}${store.state.locale}/${route.params.slug}`
-      )
-    } catch (err) {
-      throw err
-    }
+  async asyncData({ route, store, error, $axios }) {
+    const { data } = await $axios.$get(
+      `${store.state.locale}/${route.params.slug}`
+    )
+
     return {
-      content: res.data.data
+      content: data
     }
   }
 }

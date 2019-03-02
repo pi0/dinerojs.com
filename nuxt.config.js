@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { description } from './package'
 
+const API_URL = 'http://localhost:4000/docs/'
+
 export default {
   mode: 'universal',
 
@@ -35,23 +37,21 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    'nuxt-svg-loader'
-  ],
+  modules: ['@nuxtjs/axios', 'nuxt-svg-loader'],
+
   /*
   ** Axios module configuration
   */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
+    baseURL: API_URL
   },
 
+  /*
+  ** Generate configuration
+  */
   generate: {
     async routes() {
-      const endpoints = await axios
-        .get('http://localhost:4000/docs/')
-        .then(res => res.data)
+      const endpoints = await axios.get(API_URL).then(res => res.data)
 
       return Object.values(endpoints).map(path =>
         path.replace(
@@ -66,9 +66,6 @@ export default {
   ** Build configuration
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {

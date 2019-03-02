@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 import markdown from '@/utils/markdown.js'
 
 import previousNext from '@/mixins/previousNext.js'
@@ -23,17 +21,13 @@ export default {
   data() {
     return { markdown }
   },
-  async asyncData({ route, store, error }) {
-    let res = null
-    try {
-      res = await axios.get(
-        `${store.state.apiUrl}${store.state.locale}${route.path || ''}`
-      )
-    } catch (err) {
-      throw err
-    }
+  async asyncData({ route, store, error, $axios }) {
+    const { data } = await $axios.$get(
+      `${store.state.locale}${route.path || ''}`
+    )
+
     return {
-      content: res.data.data,
+      content: data,
       currentApiUrl: `${route.path || ''}`
     }
   }

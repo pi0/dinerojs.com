@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import markdown from '@/utils/markdown.js'
 import highlight from '@/utils/highlight.js'
 
@@ -43,18 +42,13 @@ export default {
       return typeof this.content === 'object'
     }
   },
-  async asyncData({ route, store, error }) {
-    let res = null
-    try {
-      res = await axios.get(
-        `${store.state.apiUrl}${store.state.locale}/api/${route.params
-          .pathMatch || ''}`
-      )
-    } catch (err) {
-      throw err
-    }
+  async asyncData({ route, store, error, $axios }) {
+    const { data } = await $axios.$get(
+      `${store.state.locale}/api/${route.params.pathMatch || ''}`
+    )
+
     return {
-      content: res.data.data,
+      content: data,
       currentApiUrl: `/api/${route.params.pathMatch || ''}`
     }
   }
