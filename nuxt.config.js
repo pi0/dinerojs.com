@@ -1,3 +1,4 @@
+import path from 'path'
 import axios from 'axios'
 
 const API_URL = 'http://localhost:4000/docs/'
@@ -59,6 +60,11 @@ export default {
   ** Build configuration
   */
   build: {
+    postcss: {
+      plugins: {
+        tailwindcss: path.join(__dirname, 'tailwind.js')
+      }
+    },
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
