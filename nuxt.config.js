@@ -1,7 +1,7 @@
-const pkg = require('./package')
-const axios = require('axios')
+import axios from 'axios'
+import { description } from './package'
 
-module.exports = {
+export default {
   mode: 'universal',
 
   /*
@@ -12,7 +12,7 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: description }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
@@ -49,14 +49,16 @@ module.exports = {
 
   generate: {
     routes() {
-      return axios.get('http://localhost:4000/docs/')
-        .then(endpoints => Object.entries(endpoints.data)
-          .map(endpoint =>
+      return axios
+        .get('http://localhost:4000/docs/')
+        .then(endpoints =>
+          Object.entries(endpoints.data).map(endpoint =>
             endpoint[1].replace(
               /(https?:\/\/[a-z0-9.]{1,}:[0-9]{1,}\/docs\/[a-z]{1,})/,
               ''
             )
-          ))
+          )
+        )
     }
   },
 
