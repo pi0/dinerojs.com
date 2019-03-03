@@ -1,5 +1,5 @@
-const pkg = require('./package')
 const axios = require('axios')
+const pkg = require('./package')
 
 module.exports = {
   mode: 'universal',
