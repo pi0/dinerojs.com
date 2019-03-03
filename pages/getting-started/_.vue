@@ -11,6 +11,7 @@
 import axios from 'axios'
 
 import markdown from '@/utils/markdown.js'
+import unslug from '@/utils/unslug.js'
 
 import previousNext from '@/mixins/previousNext.js'
 
@@ -35,6 +36,16 @@ export default {
     return {
       content: res.data.data,
       currentApiUrl: `${route.path || ''}`
+    }
+  },
+  head() {
+    return {
+      title: `${this.$route.path
+        .split('/')
+        .filter(item => item !== '')
+        .reverse()
+        .map(word => unslug(word))
+        .join(' | ')} | Dinero.js`
     }
   }
 }
