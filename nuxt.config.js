@@ -47,6 +47,10 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
+  router: {
+    middleware: ['home-redirect']
+  },
+
   generate: {
     routes() {
       return axios.get('http://localhost:4000/docs/')
