@@ -40,9 +40,10 @@ export default {
     baseURL: API_URL
   },
 
-  /*
-  ** Generate configuration
-  */
+  router: {
+    middleware: ['home-redirect']
+  },
+  
   generate: {
     async routes() {
       const endpoints = await axios.get(API_URL).then(res => res.data)

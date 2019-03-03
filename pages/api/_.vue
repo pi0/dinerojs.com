@@ -25,6 +25,7 @@
 <script>
 import markdown from '@/utils/markdown.js'
 import highlight from '@/utils/highlight.js'
+import unslug from '@/utils/unslug.js'
 
 import previousNext from '@/mixins/previousNext.js'
 
@@ -50,6 +51,15 @@ export default {
     return {
       content: data,
       currentApiUrl: `/api/${route.params.pathMatch || ''}`
+    }
+  },
+  head() {
+    return {
+      title: `${this.$route.params.pathMatch
+        .split('/')
+        .reverse()
+        .map(word => unslug(word))
+        .join(' | ')} | Dinero.js`
     }
   }
 }

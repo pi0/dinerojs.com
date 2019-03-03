@@ -812,6 +812,9 @@ module.exports = {
           },
           [`.rotate-90`]: {
             transform: 'rotateZ(90deg)'
+          },
+          '.transition-fast-out': {
+            transition: 'all 0.2s ease-out'
           }
         },
         ['responsive']
